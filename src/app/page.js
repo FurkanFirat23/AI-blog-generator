@@ -33,11 +33,26 @@ export default function Home() {
   };
 
   return (
-    <div>
-      <button onClick={handleGenerateClick} disabled={loading}>
-        {loading ? "Yükleniyor..." : "Blog Yazısını Oluştur"}
-      </button>
-      <div>{blogContent}</div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg w-full">
+        <h1 className="text-2xl font-bold mb-6 text-center text-gray-800">
+          Blog Yazısı Oluşturucu
+        </h1>
+        <button
+          onClick={handleGenerateClick}
+          disabled={loading}
+          className={`w-full px-4 py-2 text-white font-semibold rounded-lg ${
+            loading
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-blue-500 hover:bg-blue-600"
+          }`}
+        >
+          {loading ? "Yükleniyor..." : "Blog Yazısını Oluştur"}
+        </button>
+        <div className="mt-6 p-4 bg-gray-50 rounded border border-gray-200 text-gray-700">
+          {blogContent || "Henüz bir blog yazısı oluşturulmadı."}
+        </div>
+      </div>
     </div>
   );
 }
